@@ -15,8 +15,9 @@
 ## Установка
 
 ```bash
-# 1. Клонируйте или скачайте проект
-cd FishAudio
+# 1. Клонируйте проект
+git clone https://github.com/oneevil/tts-proxy.git
+cd tts-proxy
 
 # 2. Создайте виртуальное окружение и активируйте его
 python3 -m venv venv
@@ -219,7 +220,7 @@ curl http://localhost:8000/v1/audio/speech \
 ## Структура проекта
 
 ```
-FishAudio/
+tts-proxy/
   main.py            — основной сервер
   requirements.txt   — зависимости Python
   Dockerfile         — Docker-образ
