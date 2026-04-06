@@ -1,6 +1,6 @@
 services:
   tts-proxy:
-    build: .
+    image: oneevil/tts-proxy:latest
     container_name: tts-proxy
     ports:
       - "${PROXY_PORT:-8000}:8000"

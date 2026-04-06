@@ -34,12 +34,18 @@ cp .env.example .env
 
 ## Запуск через Docker
 
+Образ доступен на [Docker Hub](https://hub.docker.com/r/oneevil/tts-proxy) для `linux/amd64`, `linux/arm64` и `linux/arm/v7`.
+
 ```bash
-# 1. Создайте .env (если ещё нет)
+# 1. Скачайте docker-compose.yml и .env.example
+curl -O https://raw.githubusercontent.com/oneevil/tts-proxy/main/docker-compose.yml
+curl -O https://raw.githubusercontent.com/oneevil/tts-proxy/main/.env.example
+
+# 2. Создайте .env
 cp .env.example .env
 # отредактируйте .env
 
-# 2. Запуск
+# 3. Запуск
 docker compose up -d
 
 # Логи
@@ -48,8 +54,8 @@ docker compose logs -f
 # Остановка
 docker compose down
 
-# Пересборка после изменений
-docker compose up -d --build
+# Обновление образа
+docker compose pull && docker compose up -d
 ```
 
 **Важно:** если используете VoiceBox (локальный), в `.env` замените:
