@@ -367,8 +367,12 @@ async def synth_voicebox(body: OpenAISpeechRequest) -> StreamingResponse:
                         detail=f"VoiceBox error: {error_body.decode(errors='replace')}",
                     )
 
+                # Читаем весь ответ внутри семафора, чтобы не отправить
+                # следующий запрос пока VoiceBox ещё генерирует аудио
+                audio_data = await response.aread()
+
                 return StreamingResponse(
-                    response.aiter_bytes(),
+                    iter([audio_data]),
                     media_type="audio/wav",
                     headers={"Content-Disposition": 'attachment; filename="speech.wav"'},
                 )
