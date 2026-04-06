@@ -405,8 +405,6 @@ async def log_requests(request: Request, call_next):
 @app.post("/v1/audio/speech/")
 @app.post("/audio/speech")
 @app.post("/audio/speech/")
-@app.post("/v1/v1/audio/speech")
-@app.post("/v1/v1/audio/speech/")
 async def create_speech(body: OpenAISpeechRequest):
     backend = get_backend(body)
     logger.info(f"TTS backend={backend} voice={body.voice} model={body.model} chars={len(body.input)}")
